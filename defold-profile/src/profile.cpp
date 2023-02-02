@@ -40,6 +40,7 @@ namespace dmProfile
 
     void EndFrame(HProfile profile)
     {
+        rmt_PropertyFrameResetAll();
     }
 
     uint64_t GetTicksPerSecond()

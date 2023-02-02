@@ -1,40 +1,30 @@
-// Ext.cpp
-// Extension lib defines
-#define LIB_NAME "Ext"
-#define MODULE_NAME "Ext"
-
 // include the Defold SDK
 #include <dmsdk/sdk.h>
+#include <dmsdk/dlib/profile.h>
 
-static int Reverse(lua_State* L)
+#define LIB_NAME "ProfileCounters"
+#define MODULE_NAME "profile"
+
+//#define TEST_PROPERTY
+#if defined(TEST_PROPERTY)
+DM_PROPERTY_GROUP(rmtp_TestExt, "TestCounters");
+DM_PROPERTY_U32(rmtp_TestExtRandom, 0, FrameReset, "random number", &rmtp_TestExt);
+DM_PROPERTY_U32(rmtp_TestExtFrames, 0, NoFlags, "frame count", &rmtp_TestExt);
+#endif
+
+void rmt_DefoldInitialize();
+void rmt_DefoldFinalize();
+int rmt_PropertyCollect(lua_State* L);
+
+static int GetProfileProperties(lua_State* L)
 {
-    // The number of expected items to be on the Lua stack
-    // once this struct goes out of scope
-    DM_LUA_STACK_CHECK(L, 1);
-
-    // Check and get parameter string from stack
-    char* str = (char*)luaL_checkstring(L, 1);
-
-    // Reverse the string
-    int len = strlen(str);
-    for(int i = 0; i < len / 2; i++) {
-        const char a = str[i];
-        const char b = str[len - i - 1];
-        str[i] = b;
-        str[len - i - 1] = a;
-    }
-
-    // Put the reverse string on the stack
-    lua_pushstring(L, str);
-
-    // Return 1 item
-    return 1;
+    return rmt_PropertyCollect(L);
 }
 
 // Functions exposed to Lua
 static const luaL_reg Module_methods[] =
 {
-    {"reverse", Reverse},
+    {"get_properties", GetProfileProperties},
     {0, 0}
 };
 
@@ -51,7 +41,7 @@ static void LuaInit(lua_State* L)
 
 static dmExtension::Result AppInitializeExt(dmExtension::AppParams* params)
 {
-    dmLogInfo("AppInitializeExt");
+    rmt_DefoldInitialize();
     return dmExtension::RESULT_OK;
 }
 
@@ -59,25 +49,27 @@ static dmExtension::Result InitializeExt(dmExtension::Params* params)
 {
     // Init Lua
     LuaInit(params->m_L);
-    dmLogInfo("Registered %s Extension", MODULE_NAME);
     return dmExtension::RESULT_OK;
 }
 
 static dmExtension::Result AppFinalizeExt(dmExtension::AppParams* params)
 {
-    dmLogInfo("AppFinalizeExt");
+    rmt_DefoldFinalize();
     return dmExtension::RESULT_OK;
 }
 
 static dmExtension::Result FinalizeExt(dmExtension::Params* params)
 {
-    dmLogInfo("FinalizeExt");
     return dmExtension::RESULT_OK;
 }
 
 static dmExtension::Result OnUpdateExt(dmExtension::Params* params)
 {
-    dmLogInfo("OnUpdateExt");
+#if defined(TEST_PROPERTY)
+    DM_PROPERTY_SET_U32(rmtp_TestExtRandom, rand());
+    DM_PROPERTY_ADD_U32(rmtp_TestExtFrames, 1);
+#endif
+
     return dmExtension::RESULT_OK;
 }
 
