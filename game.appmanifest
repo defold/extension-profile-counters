@@ -1,0 +1,45 @@
+platforms:
+    armv7-ios:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    arm64-ios:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    x86_64-ios:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    armv7-android:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    arm64-android:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    x86_64-osx:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    x86_64-linux:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    x86-win32:
+        context:
+            excludeLibs: [libprofile, libremotery, libprofilerext]
+            excludeSymbols: [ProfilerExt]
+    x86_64-win32:
+        context:
+            excludeLibs: [libprofile, libremotery, libprofilerext]
+            excludeSymbols: [ProfilerExt]
+    js-web:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
+    wasm-web:
+        context:
+            excludeLibs: [profile, remotery, profilerext]
+            excludeSymbols: [ProfilerExt]
