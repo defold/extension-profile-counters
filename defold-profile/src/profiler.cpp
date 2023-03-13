@@ -33,11 +33,6 @@ void RenderProfiler(dmProfile::HProfile , dmGraphics::HContext , dmRender::HRend
     // nop
 }
 
-extern "C" void ProfilerExt()
-{
-    // nop
-}
-
 void PlatformUpdate()
 {
     // nop

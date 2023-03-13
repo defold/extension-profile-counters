@@ -13,17 +13,10 @@
 // specific language governing permissions and limitations under the License.
 
 #include <dmsdk/dlib/profile.h>
+#include <stdio.h>
 
 namespace dmProfile
 {
-    // void Initialize(const Options* options)
-    // {
-    // }
-
-    // void Finalize()
-    // {
-    // }
-
     bool IsInitialized()
     {
         return false;
@@ -35,7 +28,7 @@ namespace dmProfile
 
     HProfile BeginFrame()
     {
-        return 0;
+        return (HProfile)1; // Return a "valid" handle to enable the profiling
     }
 
     void EndFrame(HProfile profile)
@@ -57,14 +50,6 @@ namespace dmProfile
     {
     }
 
-    // void SetSampleTreeCallback(void* ctx, FSampleTreeCallback callback)
-    // {
-    // }
-
-    // void SetPropertyTreeCallback(void* ctx, FPropertyTreeCallback callback)
-    // {
-    // }
-
     void ProfileScope::StartScope(const char* name, uint64_t* name_hash)
     {
     }
@@ -80,117 +65,6 @@ namespace dmProfile
     void ScopeEnd()
     {
     }
-
-    // *******************************************************************
-
-    // SampleIterator::SampleIterator()
-    // : m_Sample(0)
-    // , m_IteratorImpl(0)
-    // {
-    // }
-
-    // SampleIterator::~SampleIterator()
-    // {
-    // }
-
-    // SampleIterator* SampleIterateChildren(HSample sample, SampleIterator* iter)
-    // {
-    //     return iter;
-    // }
-
-    // bool SampleIterateNext(SampleIterator* iter)
-    // {
-    //     return false;
-    // }
-
-    // uint32_t SampleGetNameHash(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-    // const char* SampleGetName(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-    // uint64_t SampleGetStart(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-    // uint64_t SampleGetTime(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-    // uint64_t SampleGetSelfTime(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-    // uint32_t SampleGetCallCount(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-    // uint32_t SampleGetColor(HSample sample)
-    // {
-    //     return 0;
-    // }
-
-
-    // *******************************************************************
-
-    // PropertyIterator::PropertyIterator()
-    // : m_Property(0)
-    // , m_IteratorImpl(0)
-    // {
-    // }
-
-    // PropertyIterator::~PropertyIterator()
-    // {
-    // }
-
-    // PropertyIterator* PropertyIterateChildren(HProperty property, PropertyIterator* iter)
-    // {
-    //     return iter;
-    // }
-
-    // bool PropertyIterateNext(PropertyIterator* iter)
-    // {
-    //     return false;
-    // }
-
-    // // Property accessors
-
-    // uint32_t PropertyGetNameHash(HProperty hproperty)
-    // {
-    //     return 0;
-    // }
-
-    // const char* PropertyGetName(HProperty hproperty)
-    // {
-    //     return 0;
-    // }
-
-    // const char* PropertyGetDesc(HProperty hproperty)
-    // {
-    //     return 0;
-    // }
-
-    // PropertyType PropertyGetType(HProperty hproperty)
-    // {
-    //     return PROPERTY_TYPE_GROUP;
-    // }
-
-    // PropertyValue PropertyGetValue(HProperty hproperty)
-    // {
-    //     PropertyValue out = {};
-    //     return out;
-    // }
-
-    // *******************************************************************
-
 
 } // namespace dmProfile
 

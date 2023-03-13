@@ -239,6 +239,7 @@ static int rmt_PropertyCollect(lua_State* L, rmtProperty* first_property)
 
         lua_setfield(L, -2, name);
 
+        // Debug prints
         // switch (property->type)
         // {
         //     case RMT_PropertyType_rmtS32:   printf("P: %s: %d\n", name, property->lastFrameValue.S32); break;
