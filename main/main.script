@@ -1,7 +1,32 @@
 function init(self)
 end
 
+local function prn(s)
+	io.stderr:write(s)
+end
+
+local function print_table(tbl, indent)
+	indent = indent or 0
+	prn(string.rep('  ', indent)..'{\n')
+
+	for k,v in pairs(tbl) do
+		if type(v) == 'table' then
+			prn(string.rep('  ', indent+1))
+			prn(string.format("%s:\n", k))
+			print_table(v, indent+1)
+		else
+			prn(string.rep('  ', indent+1))
+			prn(string.format("%s: %s\n", k, v))
+		end
+	end
+
+	prn(string.rep('  ', indent)..'}\n')
+end
+
 function update(self, dt)
 	local counters = profile.get_properties()
-	pprint("Counters", counters)
+
+	prn("---------------------------------------------------\n");
+	prn("Counters:\n")
+	print_table(counters)
 end
