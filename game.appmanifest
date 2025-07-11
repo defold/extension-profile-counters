@@ -1,45 +1,4 @@
 platforms:
-    armv7-ios:
+    common:
         context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    arm64-ios:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    x86_64-ios:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    armv7-android:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    arm64-android:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    x86_64-osx:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    x86_64-linux:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    x86-win32:
-        context:
-            excludeLibs: [libprofile, libremotery, libprofilerext]
-            excludeSymbols: [ProfilerExt]
-    x86_64-win32:
-        context:
-            excludeLibs: [libprofile, libremotery, libprofilerext]
-            excludeSymbols: [ProfilerExt]
-    js-web:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
-    wasm-web:
-        context:
-            excludeLibs: [profile, remotery, profilerext, profile_null, remotery_null, profilerext_null]
-            excludeSymbols: [ProfilerExt]
+            defines: [TEST_PROPERTY]
