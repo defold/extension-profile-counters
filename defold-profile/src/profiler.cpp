@@ -6,6 +6,7 @@
 #include <dmsdk/extension/extension.h>
 
 #include <stdio.h>
+#include <stdlib.h> // rand
 #include <string.h> // memset
 
 #include "profiler.h"
